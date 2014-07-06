@@ -53,12 +53,20 @@
                 <div class="col-lg-4 well">
                     <center><h3>Quick Login</h3></center>
                     <hr>
-                    <form>
-                        <input type="text"  class="form-control" id="username" placeholder="Username"/><br>
+                    <form method="post" action="">
+                      <div class="field">
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Username"/>
+                        <?php echo (isset($errors['username'])) ? '<p class="alert alert-danger form-error">' . $errors['username'] . '</p>' : '' ;?>
+                      </div>
 
-                        <input type="text" class="form-control" id="password" placeholder="Password"/><br>
+                      <div class="field">
+                        <input type="text" name="password" class="form-control" id="password" placeholder="Password"/>
+                        <?php echo (isset($errors['password'])) ? '<p class="alert alert-danger form-error">' . $errors['password'] . '</p>' : '' ;?>
+                      </div>
+                      <br>
 
-                        <input type="submit" class="btn btn-primary form-control" value="Login">
+                      <input type="hidden" name="token" value="<?php echo  Token::generate(); ?>" />
+                      <input type="submit" class="btn btn-primary form-control" value="Login">
                     </form>
                 </div>
             </div>

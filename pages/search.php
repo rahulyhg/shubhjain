@@ -1,6 +1,5 @@
 
         <div class="container">
-
             <div class="row marketing">
                 <div class="col-lg-4 well">
                     <center><h3>Search</h3></center>
@@ -54,6 +53,7 @@
                     </form>
                 </div>
                 <div class="col-md-8">
+                    <img src="images/img/search1.jpg" class="thumbnail col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <p><i><b>Search result goes here.</b></i></p>

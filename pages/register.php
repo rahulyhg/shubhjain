@@ -1,6 +1,6 @@
-
+    
         <div class="container well">
- 
+            
             <center><h2><img src="images/6edff7c1.kalash.jpg" width="40" height="45"> &nbsp;Register &nbsp;<img src="images/6edff7c1.kalash.jpg" width="40" height="45"></h2></center>
             <hr>
             <form action="" method="post" enctype="multipart/form-data">
@@ -132,13 +132,13 @@
 
                     <div class="field">
                         
-                        <input type="password" name="password" class="form-control" value="<?php echo (Input::get('password') !== null) ? Input::get('password') : '' ;?>" placeholder="Password" id="password" value=""  autocomplete="off"/>
+                        <input type="password" name="password" class="form-control"  placeholder="Password" id="password" value=""  autocomplete="off"/>
                         <?php echo (isset($errors['password'])) ? '<p class="alert alert-danger form-error">' . $errors['password'] . '</p>' : '' ;?>
                     </div>                     
 
                     <div class="field">
                         
-                        <input type="password" name="password_again" class="form-control" value="<?php echo (Input::get('password_again') !== null) ? Input::get('password_again') : '' ;?>" placeholder="Enter Password Again" id="password_again" value=""  autocomplete="off"/>
+                        <input type="password" name="password_again" class="form-control"  placeholder="Enter Password Again" id="password_again" value=""  autocomplete="off"/>
                         <?php echo (isset($errors['password_again'])) ? '<p class="alert alert-danger form-error">' . $errors['password_again'] . '</p>' : '' ;?> 
                     </div>
                     

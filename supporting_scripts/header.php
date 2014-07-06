@@ -38,7 +38,14 @@
                     <li><a href="about">About</a></li>
                     <li><a href="search">Search</a></li>
                     <li><a href="register">Register</a></li>
-                    <li><a href="login">Login</a></li>
+                    <li><a href="contact-us">Contact Us</a></li>
+                    <?php
+                        if(isset($_SESSION['user'])) {
+                            $user = new User(Encryption::decrypt($_SESSION['user']));
+                            $username = ucfirst($user->data()->username);
+                        }
+                    ?>
+                    <li><?php echo (isset($_SESSION['user']))? "<a href='logout'>" . $username . "</a>" : "<a href='login'>Login</a>";?></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

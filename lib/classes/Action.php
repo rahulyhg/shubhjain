@@ -114,7 +114,7 @@ class Action {
 							'username' => Input::get('username'),
 							'password' => Hash::make(Input::get('password'), $salt),
 							'salt' => $salt,
-							'name' => Input::get('name'),
+							'email' => Input::get('email'),
 							'joined' => date('Y-m-d H:i:s'),
 							'group' => 1
 						))->lastUserId();
@@ -150,6 +150,51 @@ class Action {
 				}
 			}
 		}
+	}
+
+	public static function login() {
+		if(Input::exists()){
+			if(Token::check(Input::get('token'))){
+
+				$validate = new Validate();
+				$validate = $validate->check($_POST, array(
+					'username' => array(
+						'required' => true,
+						'label' => 'Username'
+					),
+					'password' => array(
+						'required' => true,
+						'label' => 'Password'
+					)
+				));
+
+				if($validate->passed()){
+					$user = new User();
+
+					$remember = (Input::get('remember') === 'on') ? true : false;
+					$login = $user->login(Input::get('username'), Input::get('password'), $remember);
+					
+					if($login){
+						Redirect::to('home');
+					} else {
+						echo '<p>Sorry, logging in failed!!</p>';
+					}
+
+				} else {
+					return $validate->errors();
+					/*Function found in common-markup.php*/
+					/*displayErrors($validate->errors(), 'validation');*/
+				}
+			}
+		}
+	}
+
+
+	public static function logout() {
+		$user = new User();
+		$user->logout();
+
+		Redirect::to('home');
 	}
 
 }

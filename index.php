@@ -10,7 +10,6 @@
 
   if($url === '') {
     $url = 'home';
-    include_once 'pages/' . $url . '.php';
   }
 
   $filePath = 'pages/' . $url . '.php';
@@ -23,11 +22,12 @@
           $errors = $result;
         }
         break;
-      
-      default:
-        
+
+      case ('login' || 'home' || '') :
+        Action::login();
         break;
     }
+
     include_once $filePath;    
   } else {
     Redirect::to('404');
